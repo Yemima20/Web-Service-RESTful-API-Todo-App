@@ -8,16 +8,16 @@ Repositori ini adalah aplikasi backend untuk manajemen todo list. Dibangun mengg
 - [Menjalankan Server](#menjalankan-server)
 - [Endpoint API](#endpoint-api)
   - User
-    -   [POST /todo-app/users/register](#post-todo_app-users/register)
-    -   [POST /todo-app/users/login](#post-todo_app-users/login)
+    -   [POST /todo-app/users/register](#post-todo-appusersregister)
+    -   [POST /todo-app/users/login](#post-todo-appuserslogin)
       
   - Todo
-    - [GET /todo-app/todos](#get-todo_app-todos)
-    - [POST /todo-app/todos/new](#post-todo_app-todos-new)
-    - [GET /todo-app/todos/:id](#get-todo_app-todos-id)
-    - [PATCH /todo-app/todos/:id](#patch-todo_app-todos-id)
-    - [DELETE /todo-app/todos/:id](#delete-todo_app-todos-id)
-    - [DELETE /todo-app/todos](#delete-todo_app-todos)
+    - [GET /todo-app/todos](#get-todo-apptodos)
+    - [POST /todo-app/todos/new](#post-todo-apptodosnew)
+    - [GET /todo-app/todos/:id](#get-todo-apptodosid)
+    - [PATCH /todo-app/todos/:id](#patch-todo-apptodosid)
+    - [DELETE /todo-app/todos/:id](#delete-todo-apptodosid)
+    - [DELETE /todo-app/todos](#delete-todo-apptodos)
       
 - [Contoh Penggunaan](#contoh-penggunaan)
 
