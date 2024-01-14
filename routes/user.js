@@ -17,7 +17,7 @@ router.post("/register", async (req, res) => {
 
     // get error if user already register
     if (userExist) {
-      return res.status(400).json({ message: "Already registered" });
+      return res.status(409).json({ message: "Already registered" });
     }
 
     // make new user
@@ -45,14 +45,14 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ email });
     // check for user existence
     if (!user) {
-      return res.status(400).json({ message: "Invalid information, no user found." });
+      return res.status(404).json({ message: "Invalid information, no user found." });
     }
 
     // validate the password
     const match = await bcrypt.compare(password, user.password);
 
     match ? res.json({ message: "Succesfully log in!", userId: user._id, token: generateJwt(user._id)})
-    : res.status(400).json({ message: "Invalid information. Either wrong email or password" });
+    : res.status(401).json({ message: "Invalid information. Either wrong email or password" });
 
   } catch (error) {
     console.error(error);

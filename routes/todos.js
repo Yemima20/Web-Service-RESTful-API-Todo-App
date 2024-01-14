@@ -34,7 +34,7 @@ router.post("/new", async (req, res) => {
     const userId = req.user;
     const todo = new Todo({ title, description, completed, userId });
     const saveTodo = await todo.save();
-    res.json({ message: "Successfully created a new todo!", todo: saveTodo });
+    res.status(201).json({ message: "Successfully created a new todo!", todo: saveTodo });
   } catch (error) {
     res.status(400).json({ message: "Failed to create a new todo!" });
   }
@@ -45,10 +45,10 @@ router.get("/:id", async (req, res) => {
   try {
     const todo = await Todo.findById(req.params.id);
 
-    todo.userId != req.user ? res.status(403).json({ message: "Unauthorized" })
+    todo.userId != req.user ? res.status(403).json({ message: "Forbidden. Cannot enter other user's todo" })
     : res.json({ message: "Successfully viewed todo details!", todo });
   } catch (error) {
-    res.status(404).json({ message: "Failed to view todo details!" });
+    res.status(404).json({ message: "Not found. Failed to view todo details!" });
   }
 });
 
@@ -59,10 +59,10 @@ router.patch("/:id", async (req, res) => {
       new: true,
     });
 
-    updateTodo.userId != req.user ? res.status(403).json({ message: "Unauthorized" })
+    updateTodo.userId != req.user ? res.status(403).json({ message: "Forbidden. Cannot update other user's todo" })
     : res.json({ message: "Successfully changed the todo data!", todo: updateTodo });
   } catch (error) {
-    res.status(400).json({ message: "Failed to change todo data!" });
+    res.status(400).json({ message: "Not found. Failed to change todo data!" });
   }
 });
 
@@ -72,7 +72,7 @@ router.delete("/:id", async (req, res) => {
     const todo = await Todo.findByIdAndDelete(req.params.id);
 
     !todo ? res.status(404).json({ message: "Todo not found" })
-    : todo.userId.toString() !== req.user.toString() ? res.status(403).json({ message: "Unauthorized" })
+    : todo.userId.toString() !== req.user.toString() ? res.status(403).json({ message: "Forbidden. Cannot delete other user's todo" })
     : res.json({ message: "Successfully deleted todo!", todo });
   } catch (error) {
     res.status(400).json({ message: "Failed to delete todo!" });
