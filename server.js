@@ -17,7 +17,6 @@ db.once('open', () => console.log('Connected to mongoose!'))
 // route --> user
 const userRoute = require('./routes/user')
 app.use('/todo-app/users', userRoute)
-
 // route --> todo
 const todoRoute = require('./routes/todos')
 app.use('/todo-app/todos', todoRoute)
