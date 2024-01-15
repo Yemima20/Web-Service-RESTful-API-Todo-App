@@ -296,3 +296,5 @@ Berikut adalah contoh penggunaan endpoint API dengan menggunakan perangkat lunak
     - Menghapus semua todo user: `DELETE http://localhost:7050/todo-app/todos`
 
 Pastikan Anda mengganti `:id` dengan ID dan isi token user di Authorization (Bearer Token) yang sesuai dalam penggunaan praktis.
+
+Pada `http://localhost:7050/` juga dapat diganti dengan `https://cooperative-fly-pantsuit.cyclic.app/` yang merupakan link hasil deploy repositori ini ke `Cyclic`.
